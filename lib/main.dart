@@ -23,8 +23,24 @@ class MainScaffold extends StatelessWidget {
         title: Text("Home Page"),
       ),
       body: Container(
-        child: Text("Welcome to our application"),
+        child: MainListView(),
       ),
+    );
+  }
+}
+
+class MainListView extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) { 
+    return ListView(
+      children: <Widget>[
+        ListTile(
+          title: Text("This is where the text will go"),
+        ),
+        ListTile(
+          title: Text("Another entry here"),
+        )
+      ],
     );
   }
 }
