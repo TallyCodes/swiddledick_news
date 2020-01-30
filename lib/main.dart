@@ -22,8 +22,10 @@ class MainScaffold extends StatelessWidget {
       appBar: AppBar(
         title: Text("Home Page"),
       ),
-      body: Container(
-        child: BuildListItems(),
+      body: SafeArea(
+              child: Container(
+          child: BuildListItems(),
+        ),
       ),
     );
   }
