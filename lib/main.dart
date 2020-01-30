@@ -1,8 +1,7 @@
-import 'dart:async';
-import 'dart:convert';
-
 import 'package:flutter/material.dart';
-import 'API.dart';
+
+import 'api.dart';
+import 'models/Item.dart';
 
 void main() => runApp(HomePage());
 
@@ -41,15 +40,15 @@ class BuildListItems extends StatefulWidget {
 }
 
 class _BuildListItems extends State<BuildListItems> {
-  var topStoryIds = new List<int>();
+  List<Item> items = new List<Item>();
 
   _getTopPosts() {
-    Api.getTopStories().then((response) {
+    Api.getTopStories()
+      .then((response) {
         setState(() {
-          Iterable list = json.decode(response.body);
-          topStoryIds = new List<int>.from(list);
+            items = response; 
         });
-    });
+      });
   }
 
   @override
@@ -65,23 +64,21 @@ class _BuildListItems extends State<BuildListItems> {
 
   Widget _myListView(BuildContext context) {
 
-      final titles = ['bike', 'boat', 'bus', 'car',
-      'railway', 'run', 'subway', 'transit', 'walk'];
-
       final icons = [Icons.directions_bike, Icons.directions_boat,
       Icons.directions_bus, Icons.directions_car, Icons.directions_railway,
       Icons.directions_run, Icons.directions_subway, Icons.directions_transit,
       Icons.directions_walk];
 
       return ListView.builder(
-        itemCount: topStoryIds.length,
+        itemCount: items.length,
         itemBuilder: (context, index) {
           return Card( 
             child: ListTile(
-              //leading: Icon(icons[index]),
-              title: Text(topStoryIds[index].toString()),
+              leading: Text(items[index].score.toString()),
+              title: Text(items[index].title),
+              subtitle: Text("By: " + items[index].by),
               onTap: () {
-                print(topStoryIds[index]);
+                print(items[index]);
               },
             ),
           );
