@@ -1,4 +1,8 @@
+import 'dart:async';
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'API.dart';
 
 void main() => runApp(HomePage());
 
@@ -33,12 +37,27 @@ class MainScaffold extends StatelessWidget {
 
 class BuildListItems extends StatefulWidget { 
   @override
-  _BuildListItems createState() { 
-    return _BuildListItems();
-  }
+  _BuildListItems createState() => _BuildListItems();
 }
 
 class _BuildListItems extends State<BuildListItems> {
+  var topStoryIds = new List<int>();
+
+  _getTopPosts() {
+    Api.getTopStories().then((response) {
+        setState(() {
+          Iterable list = json.decode(response.body);
+          topStoryIds = new List<int>.from(list);
+        });
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getTopPosts();
+  }
+
   @override
   Widget build(BuildContext context) { 
     return _myListView(context);
@@ -55,14 +74,14 @@ class _BuildListItems extends State<BuildListItems> {
       Icons.directions_walk];
 
       return ListView.builder(
-        itemCount: titles.length,
+        itemCount: topStoryIds.length,
         itemBuilder: (context, index) {
           return Card( 
             child: ListTile(
-              leading: Icon(icons[index]),
-              title: Text(titles[index]),
+              //leading: Icon(icons[index]),
+              title: Text(topStoryIds[index].toString()),
               onTap: () {
-                print(titles[index]);
+                print(topStoryIds[index]);
               },
             ),
           );
