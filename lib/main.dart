@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:firebase/firebase.dart';
 
 void main() => runApp(HomePage());
 
@@ -24,24 +23,8 @@ class MainScaffold extends StatelessWidget {
         title: Text("Home Page"),
       ),
       body: Container(
-        child: MainListView(),
+        child: BuildListItems(),
       ),
-    );
-  }
-}
-
-class MainListView extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) { 
-    return ListView(
-      children: <Widget>[
-        ListTile(
-          title: Text("This is where the text will go"),
-        ),
-        ListTile(
-          title: Text("Another entry here"),
-        )
-      ],
     );
   }
 }
@@ -54,21 +37,34 @@ class BuildListItems extends StatefulWidget {
 }
 
 class _BuildListItems extends State<BuildListItems> {
-  Widget build(BuildContext context, Map data) { 
-
-    final newsEntry = Entry.fromMap(data);
-
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-      child: Container(
-        decoration: BoxDecoration(
-          border: Border.all(color: Colors.grey),
-          borderRadius: BorderRadius.circular(5.0)
-        ),
-        child: ListTile(
-
-        ),
-      ),
-    );
+  @override
+  Widget build(BuildContext context) { 
+    return _myListView(context);
   }
+
+  Widget _myListView(BuildContext context) {
+
+      final titles = ['bike', 'boat', 'bus', 'car',
+      'railway', 'run', 'subway', 'transit', 'walk'];
+
+      final icons = [Icons.directions_bike, Icons.directions_boat,
+      Icons.directions_bus, Icons.directions_car, Icons.directions_railway,
+      Icons.directions_run, Icons.directions_subway, Icons.directions_transit,
+      Icons.directions_walk];
+
+      return ListView.builder(
+        itemCount: titles.length,
+        itemBuilder: (context, index) {
+          return Card( 
+            child: ListTile(
+              leading: Icon(icons[index]),
+              title: Text(titles[index]),
+              onTap: () {
+                print(titles[index]);
+              },
+            ),
+          );
+        },
+      );
+    }
 }
