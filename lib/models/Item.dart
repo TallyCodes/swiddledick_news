@@ -9,6 +9,11 @@ class Item {
   final String type;
   final String url;
 
+  int getHoursSincePosted() {
+    DateTime postDate = new DateTime.fromMillisecondsSinceEpoch(time * 1000);
+    return DateTime.now().difference(postDate).inHours;
+  }
+
   Item({this.id, this.by, this.descendants, this.kids, this.score, this.time,
     this.title, this.type, this.url});
 
@@ -16,7 +21,7 @@ class Item {
     return Item(
       id: json["id"],
       by: json["by"],
-      descendants: json["descendents"],
+      descendants: json["descendants"],
       kids: json["kids"],
       score: json["score"],
       time: json["time"],
