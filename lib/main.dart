@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'api.dart';
 import 'models/Item.dart';
+import './detail_page.dart';
 
 void main() => runApp(HomePage());
 
@@ -63,12 +64,6 @@ class _BuildListItems extends State<BuildListItems> {
   }
 
   Widget _myListView(BuildContext context) {
-
-      final icons = [Icons.directions_bike, Icons.directions_boat,
-      Icons.directions_bus, Icons.directions_car, Icons.directions_railway,
-      Icons.directions_run, Icons.directions_subway, Icons.directions_transit,
-      Icons.directions_walk];
-
       return ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
@@ -78,7 +73,11 @@ class _BuildListItems extends State<BuildListItems> {
               title: Text(items[index].title),
               subtitle: Text("By: " + items[index].by),
               onTap: () {
-                print(items[index]);
+                print(items[index].id);
+                Navigator.push(
+                  context, 
+                  MaterialPageRoute(builder: (context) => DetailPage()),
+                  );
               },
             ),
           );
