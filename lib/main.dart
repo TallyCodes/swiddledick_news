@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'dart:convert';
 
 import 'api.dart';
 import 'models/Item.dart';
@@ -45,11 +46,14 @@ class _BuildListItems extends State<BuildListItems> {
 
   _getTopPosts() {
     Api.getTopStories()
-      .then((response) {
+      .then((response) => json.decode(response.body))
+      .then((decoded) => List<int>.from(decoded.take(30)))
+      .then((list) => Api.getItemList(list))
+      .then((itemList) {
         setState(() {
-            items = response; 
+            items = itemList; 
         });
-      });
+      }).catchError((error) => print(error));
   }
 
   @override
@@ -67,11 +71,14 @@ class _BuildListItems extends State<BuildListItems> {
       return ListView.builder(
         itemCount: items.length,
         itemBuilder: (context, index) {
-          return Card( 
+          return Card(
             child: ListTile(
-              leading: Text(items[index].score.toString()),
               title: Text(items[index].title),
-              subtitle: Text("By: " + items[index].by),
+              subtitle: Text("${items[index].by}  ${items[index].getHoursSincePosted()} hrs"),
+              trailing: Column(children: <Widget>[
+                Icon(Icons.comment),
+                Text("${items[index].descendants}"),
+              ]), 
               onTap: () {
                 print(items[index].id);
                 Navigator.push(

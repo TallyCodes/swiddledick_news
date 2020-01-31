@@ -7,12 +7,9 @@ import 'models/Item.dart';
 const baseUrl = "https://hacker-news.firebaseio.com/v0";
 
 class Api {
-  static Future<List<Item>> getTopStories() async {
-    var url = baseUrl + "/topstories.json";
-    final response = await http.get(url);
-    Iterable list = json.decode(response.body);
-    var items = await getItemList(new List<int>.from(list.take(30)));
-    return items;
+  static Future getTopStories() {
+    var url = "$baseUrl/topstories.json";
+    return http.get(url);
   }
 
   static Future<List<Item>> getItemList(List<int> ids) {
@@ -20,7 +17,7 @@ class Api {
   }
 
   static Future<Item> getItem(int id) async {
-    var url = baseUrl + "/item/" + id.toString() + ".json";
+    var url = "$baseUrl/item/${id.toString()}.json";
 
     final response = await http.get(url);
 
