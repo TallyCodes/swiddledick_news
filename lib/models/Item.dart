@@ -19,15 +19,15 @@ class Item {
 
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
-      id: json["id"],
-      by: json["by"],
-      descendants: json["descendants"],
-      kids: json["kids"],
-      score: json["score"],
-      time: json["time"],
-      title: json["title"],
-      type: json["type"],
-      url: json["url"]
+      id: json['id'],
+      by: json['by'],
+      descendants: json['descendants'],
+      kids: json['kids'],
+      score: json['score'],
+      time: json['time'],
+      title: json['title'],
+      type: json['type'],
+      url: json['url']
     );
   }
 }
