@@ -30,20 +30,27 @@ class DetailPage extends StatelessWidget {
                   height: 20.0,
                 ),
                 Container(
-                  child: Text(
-                    'This is where the story will go.',
-                    textAlign: TextAlign.center,
+                  child: Column(
+                    children: <Widget>[
+                      Text(
+                        '${selectedItem.url}',
+                      ),
+                      Text(
+                        'This is where the story will go.',
+                        textAlign: TextAlign.center,
+                      ),
+                    ],
                   ),
                 ),
               ],
             ),
           ),
-
           Card(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: <Widget> [
-                Text('This is where the comments will go.',
+              children: <Widget>[
+                Text(
+                  'This is where the comments will go.',
                 )
               ],
             ),

@@ -3,7 +3,6 @@ import 'dart:convert';
 
 import 'package:swiddledick_news/services/api.dart';
 import 'package:swiddledick_news/models/Item.dart';
-import 'package:swiddledick_news/models/Entry.dart';
 import 'package:swiddledick_news/views/detail_page.dart';
 
 
