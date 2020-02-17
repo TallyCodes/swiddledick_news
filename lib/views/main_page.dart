@@ -30,6 +30,7 @@ class BuildListItems extends StatefulWidget {
 class _BuildListItems extends State<BuildListItems> {
   List<Item> items = new List<Item>();
 
+  //TODO: I would like to make this a method to be able to reload the table on either a button or pull down to reload option.
   _getTopPosts() {
     Api.getTopStories()
       .then((response) => json.decode(response.body))
