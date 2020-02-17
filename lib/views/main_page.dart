@@ -29,7 +29,7 @@ class BuildListItems extends StatefulWidget {
 
 class _BuildListItems extends State<BuildListItems> {
   List<Item> items = new List<Item>();
-
+//TODO: Make this a single method to call updates to
   _getTopPosts() {
     Api.getTopStories()
       .then((response) => json.decode(response.body))
