@@ -1,7 +1,6 @@
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
-import 'package:shimmer/shimmer.dart';
 import 'package:swiddledick_news/models/Item.dart';
 import 'package:swiddledick_news/services/api.dart';
 
