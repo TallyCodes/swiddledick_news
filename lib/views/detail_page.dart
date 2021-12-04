@@ -4,8 +4,8 @@ import 'package:swiddledick_news/models/Item.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class DetailPage extends StatefulWidget {
-  DetailPage({@required this.selectedItem});
-  
+  DetailPage({required this.selectedItem});
+
   final Item selectedItem;
   @override
   _DetailPageState createState() => _DetailPageState();
@@ -43,9 +43,9 @@ class _DetailPageState extends State<DetailPage> {
 
 class MainWebView extends StatelessWidget {
   const MainWebView({
-    Key key,
-    @required this.selectedItem,
-    @required Completer<WebViewController> controller,
+    Key? key,
+    required this.selectedItem,
+    required Completer<WebViewController> controller,
   })  : _controller = controller,
         super(key: key);
 

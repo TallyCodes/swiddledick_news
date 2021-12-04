@@ -14,20 +14,28 @@ class Item {
     return DateTime.now().difference(postDate).inHours;
   }
 
-  Item({this.id, this.by, this.descendants, this.kids, this.score, this.time,
-    this.title, this.type, this.url});
+  Item({
+    required this.id,
+    required this.by,
+    required this.descendants,
+    required this.kids,
+    required this.score,
+    required this.time,
+    required this.title,
+    required this.type,
+    required this.url,
+  });
 
   factory Item.fromJson(Map<String, dynamic> json) {
     return Item(
-      id: json['id'],
-      by: json['by'],
-      descendants: json['descendants'],
-      kids: json['kids'],
-      score: json['score'],
-      time: json['time'],
-      title: json['title'],
-      type: json['type'],
-      url: json['url']
-    );
+        id: json['id'],
+        by: json['by'],
+        descendants: json['descendants'],
+        kids: json['kids'],
+        score: json['score'],
+        time: json['time'],
+        title: json['title'],
+        type: json['type'],
+        url: json['url']);
   }
 }
