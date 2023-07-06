@@ -30,12 +30,13 @@ class Item {
     return Item(
         id: json['id'],
         by: json['by'],
-        descendants: json['descendants'],
-        kids: json['kids'],
+        descendants: json.containsKey('descendants') ? json['descendants'] : 0,
+        kids: json.containsKey('kids') ? json['kids'] : List<dynamic>.empty(),
         score: json['score'],
         time: json['time'],
         title: json['title'],
         type: json['type'],
-        url: json['url']);
+        url: json.containsKey('url') ? json['url'] : ''
+      );
   }
 }

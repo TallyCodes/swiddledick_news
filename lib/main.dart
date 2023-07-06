@@ -9,9 +9,9 @@ class HomePage extends StatelessWidget {
     return MaterialApp(
       title: 'Swiddledick News',
       theme: ThemeData(
-        primarySwatch: Colors.green,
+        primarySwatch: Colors.orange,
       ),
-      home: MainView(),
+      home: App(),
     );
   }
 }
