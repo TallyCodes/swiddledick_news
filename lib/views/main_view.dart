@@ -80,8 +80,13 @@ class MainView extends State<App> {
 
   Future<List<Item>> _getTopPosts() async {
     var response = await Api.getTopStories();
-    var storiesDecoded = await json.decode(response.body);
-    var storiesListed = List<int>.from(storiesDecoded.take(30));
-    return Api.getItemList(storiesListed);
+    
+    if (response.statusCode == 200) {
+      var storiesDecoded = await json.decode(response.body);
+      var storiesListed = List<int>.from(storiesDecoded.take(30));
+      return Api.getItemList(storiesListed);
+    }
+
+    return [];
   }
 }
