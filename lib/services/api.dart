@@ -6,9 +6,10 @@ import 'package:swiddledick_news/models/Item.dart';
 
 class Api {
   static const baseUrl = 'hacker-news.firebaseio.com';
+  static const topStoriesUrl = '/v0/topstories.json';
 
   static Future<dynamic> getTopStories() {
-    var url = Uri.https(baseUrl, '/v0/topstories.json');
+    var url = Uri.https(baseUrl, topStoriesUrl);
     return http.get(url);
   }
 

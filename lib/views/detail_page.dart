@@ -26,21 +26,6 @@ class _DetailPageState extends State<DetailPage> {
   }
 }
 
-// class DetailPage extends StatelessWidget {
-//   DetailPage({@required this.selectedItem});
-
-//   final Item selectedItem;
-//   Completer<WebViewController> _controller = Completer<WebViewController>();
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(),
-//       body: MainWebView(selectedItem: selectedItem, controller: _controller),
-//     );
-//   }
-// }
-
 class MainWebView extends StatelessWidget {
   const MainWebView({
     Key? key,

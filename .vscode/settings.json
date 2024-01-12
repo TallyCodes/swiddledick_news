@@ -4,5 +4,6 @@
         "Schyler",
         "firestore",
         "swiddledick"
-    ]
+    ],
+    "java.configuration.updateBuildConfiguration": "interactive"
 }

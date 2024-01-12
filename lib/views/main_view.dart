@@ -43,9 +43,17 @@ class MainView extends State<App> {
                         title: Text(items[index].title),
                         subtitle: Text('${items[index].by}  ${items[index].getHoursSincePosted()} hrs'),
                         trailing: Column(children: <Widget>[
-                          Icon(Icons.comment),
-                          Text('${items[index].descendants}'),
-                        ]),
+                          TextButton.icon(
+                            label: Text('${items[index].descendants}'),
+                            icon: Icon(Icons.comment),
+                            onPressed: () {
+                              print('Loading Comments for ${items[index].id}');
+                            }
+                          ),
+                        ],
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        ),
                         onTap: () {
                           print(items[index].id);
                           Navigator.push(
